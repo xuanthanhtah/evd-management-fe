@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { supabase } from '@/networking/supabase';
 import { getUserRole } from '@/features/auth/services/auth.services';
-import type { AppRole, AuthUser } from '@/features/auth/services/auth.services';
+import type { AuthUser } from '@/features/auth/services/auth.services';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
