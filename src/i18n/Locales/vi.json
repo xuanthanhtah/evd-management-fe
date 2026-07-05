@@ -1,0 +1,106 @@
+{
+  "common": {
+    "language": {
+      "vi": "Tiếng Việt",
+      "en": "English"
+    },
+    "action": {
+      "save": "Lưu",
+      "cancel": "Hủy",
+      "delete": "Xóa",
+      "edit": "Chỉnh sửa",
+      "clear": "Xóa bộ lọc"
+    },
+    "menu": {
+      "documents": "Tài liệu",
+      "logout": "Đăng xuất"
+    }
+  },
+  "auth": {},
+  "evd": {
+    "page": {
+      "title": "Quản lý Tài liệu",
+      "subtitle": "Quản lý và tổ chức các tài liệu EVD với đầy đủ CRUD và tải lên hàng loạt."
+    },
+    "action": {
+      "import": "Nhập File",
+      "add": "Thêm Tài liệu"
+    },
+    "filter": {
+      "search_placeholder": "Tìm kiếm theo mã hoặc tiêu đề...",
+      "status": "Trạng thái",
+      "category": "Danh mục"
+    },
+    "table": {
+      "column": {
+        "code": "Mã TL",
+        "title": "Tiêu đề",
+        "category": "Danh mục",
+        "status": "Trạng thái",
+        "created_by": "Người tạo",
+        "created_at": "Ngày tạo",
+        "actions": "Hành động"
+      },
+      "empty": "Không tìm thấy tài liệu nào. Hãy thử điều chỉnh bộ lọc hoặc tạo mới.",
+      "pagination": "tài liệu"
+    },
+    "popconfirm": {
+      "delete_title": "Xóa tài liệu",
+      "delete_desc": "Bạn có chắc chắn muốn xóa tài liệu này? Hành động này không thể hoàn tác."
+    },
+    "tooltip": {
+      "save": "Lưu",
+      "cancel": "Hủy",
+      "edit": "Chỉnh sửa (click đúp)",
+      "delete": "Xóa"
+    },
+    "import": {
+      "title_upload": "Nhập Tài liệu",
+      "title_preview": "Xem trước & Xác thực",
+      "title_inserting": "Đang nhập...",
+      "title_done": "Hoàn tất Nhập",
+      "drag_drop": "Nhấp hoặc kéo file CSV/Excel vào khu vực này",
+      "required_columns": "Các cột bắt buộc:",
+      "format_example": "Định dạng mẫu (CSV hoặc sheet đầu tiên của XLSX):",
+      "parsing": "Đang đọc file...",
+      "valid_rows": "Dòng hợp lệ",
+      "invalid_rows": "Dòng lỗi",
+      "total_rows": "Tổng số dòng",
+      "no_errors": "Không có lỗi — tất cả các dòng đều hợp lệ!",
+      "uploading": "Đang tải lên Supabase...",
+      "batching": "Đang chèn theo từng lô 1,000 dòng",
+      "rows": "dòng",
+      "import_complete": "Nhập dữ liệu hoàn tất!",
+      "success_msg": "tài liệu đã được nhập thành công.",
+      "btn_cancel": "Hủy",
+      "btn_close": "Đóng",
+      "btn_done": "Hoàn tất",
+      "btn_import_valid": "Nhập {{count}} dòng hợp lệ",
+      "session_expired": "Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại để nhập tài liệu.",
+      "import_success_toast": "Đã nhập thành công {{count}} tài liệu",
+      "import_failed": "Nhập tài liệu thất bại"
+    },
+    "create": {
+      "title": "Tạo Tài liệu Mới",
+      "code": "Mã Tài liệu",
+      "code_placeholder": "VD: DOC-001",
+      "title_label": "Tiêu đề",
+      "title_placeholder": "Nhập tiêu đề tài liệu",
+      "category": "Danh mục",
+      "category_placeholder": "Chọn danh mục",
+      "status": "Trạng thái",
+      "btn_cancel": "Hủy",
+      "btn_submit": "Tạo Tài liệu",
+      "session_expired": "Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại để tạo tài liệu."
+    },
+    "validation": {
+      "codeRequired": "Mã tài liệu là bắt buộc",
+      "codeMaxLength": "Mã tài liệu không được vượt quá 20 ký tự",
+      "codeFormat": "Mã tài liệu chỉ được chứa chữ cái, số, dấu gạch ngang và gạch dưới",
+      "titleRequired": "Tiêu đề là bắt buộc",
+      "titleMaxLength": "Tiêu đề không được vượt quá 255 ký tự",
+      "categoryRequired": "Danh mục là bắt buộc",
+      "statusRequired": "Trạng thái là bắt buộc"
+    }
+  }
+}
