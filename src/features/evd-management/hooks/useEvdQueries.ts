@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { App } from 'antd';
 import {
@@ -40,15 +41,17 @@ export function useEvdList(params: EvdListParams) {
 export function useCreateEvd() {
   const queryClient = useQueryClient();
   const { message } = App.useApp();
+  const { t } = useTranslation('evd');
 
   return useMutation<EvdDocument, Error, CreateEvdDto>({
     mutationFn: createEvdDocument,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: evdKeys.lists() });
-      message.success('Document created successfully');
+      message.success(t('messages.create_success'));
     },
     onError: (err) => {
-      message.error(err.message || 'Failed to create document');
+      console.error(err);
+      message.error(t('messages.create_failed'));
     },
   });
 }
@@ -65,6 +68,7 @@ interface UpdateEvdVariables {
 export function useUpdateEvd() {
   const queryClient = useQueryClient();
   const { message } = App.useApp();
+  const { t } = useTranslation('evd');
 
   return useMutation<EvdDocument, Error, UpdateEvdVariables, { previousData: EvdListResponse | undefined }>({
     mutationFn: ({ id, dto }) => updateEvdDocument(id, dto),
@@ -97,7 +101,8 @@ export function useUpdateEvd() {
       if (context?.previousData) {
         queryClient.setQueryData(evdKeys.list(queryParams), context.previousData);
       }
-      message.error(err.message || 'Failed to update document');
+      console.error(err);
+      message.error(t('messages.update_failed'));
     },
 
     onSettled: (_data, _err, { queryParams }) => {
@@ -105,7 +110,7 @@ export function useUpdateEvd() {
     },
 
     onSuccess: () => {
-      message.success('Document updated successfully');
+      message.success(t('messages.update_success'));
     },
   });
 }
@@ -121,6 +126,7 @@ interface DeleteEvdVariables {
 export function useDeleteEvd() {
   const queryClient = useQueryClient();
   const { message } = App.useApp();
+  const { t } = useTranslation('evd');
 
   return useMutation<void, Error, DeleteEvdVariables, { previousData: EvdListResponse | undefined }>({
     mutationFn: ({ id }) => deleteEvdDocument(id),
@@ -146,7 +152,8 @@ export function useDeleteEvd() {
       if (context?.previousData) {
         queryClient.setQueryData(evdKeys.list(queryParams), context.previousData);
       }
-      message.error(err.message || 'Failed to delete document');
+      console.error(err);
+      message.error(t('messages.delete_failed'));
     },
 
     onSettled: (_data, _err, { queryParams }) => {
@@ -154,7 +161,7 @@ export function useDeleteEvd() {
     },
 
     onSuccess: () => {
-      message.success('Document deleted successfully');
+      message.success(t('messages.delete_success'));
     },
   });
 }

@@ -141,10 +141,10 @@ export const EvdImportModal = ({ queryParams }: EvdImportModalProps) => {
         t('evd:import.import_success_toast', { count: importResult.valid.length }),
       );
     } catch (err: unknown) {
-      const errMsg = err instanceof Error ? err.message : t('evd:import.import_failed');
-      setErrorMessage(errMsg);
+      console.error(err);
+      setErrorMessage(t('evd:import.import_failed'));
       setStep('preview');
-      message.error(errMsg);
+      message.error(t('evd:import.import_failed'));
     }
   }, [importResult, queryClient, message, user?.id]);
 

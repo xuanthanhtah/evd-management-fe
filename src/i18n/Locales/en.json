@@ -16,7 +16,10 @@
       "logout": "Logout"
     }
   },
-  "auth": {},
+  "auth": {
+    "login_success": "Login successful",
+    "login_failed": "Failed to login"
+  },
   "evd": {
     "page": {
       "title": "Document Management",
@@ -92,6 +95,14 @@
       "btn_cancel": "Cancel",
       "btn_submit": "Create Document",
       "session_expired": "Session expired. Please log in again to create a document."
+    },
+    "messages": {
+      "create_success": "Document created successfully",
+      "create_failed": "Failed to create document",
+      "update_success": "Document updated successfully",
+      "update_failed": "Failed to update document",
+      "delete_success": "Document deleted successfully",
+      "delete_failed": "Failed to delete document"
     },
     "validation": {
       "codeRequired": "Code is required",

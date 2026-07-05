@@ -2,6 +2,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Form, Input, Button, App } from 'antd';
 import { MailOutlined, LockOutlined } from '@ant-design/icons';
 import { login } from '../services/auth.services';
@@ -22,6 +23,7 @@ export const LoginPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { message } = App.useApp();
+  const { t } = useTranslation('auth');
   const setUser = useAuthStore((state) => state.setUser);
 
   const from = (location.state as { from?: { pathname: string } })?.from?.pathname || '/evd-management';
@@ -50,11 +52,11 @@ export const LoginPage = () => {
           display_name: user.user_metadata?.display_name as string,
         },
       });
-      message.success('Login successful');
+      message.success(t('login_success'));
       navigate(from, { replace: true });
     } catch (error: unknown) {
-      const msg = error instanceof Error ? error.message : 'Failed to login';
-      message.error(msg);
+      console.error(error);
+      message.error(t('login_failed'));
     }
   };
 

@@ -16,7 +16,10 @@
       "logout": "Đăng xuất"
     }
   },
-  "auth": {},
+  "auth": {
+    "login_success": "Đăng nhập thành công",
+    "login_failed": "Đăng nhập thất bại"
+  },
   "evd": {
     "page": {
       "title": "Quản lý Tài liệu",
@@ -92,6 +95,14 @@
       "btn_cancel": "Hủy",
       "btn_submit": "Tạo Tài liệu",
       "session_expired": "Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại để tạo tài liệu."
+    },
+    "messages": {
+      "create_success": "Tạo tài liệu thành công",
+      "create_failed": "Tạo tài liệu thất bại",
+      "update_success": "Cập nhật tài liệu thành công",
+      "update_failed": "Cập nhật tài liệu thất bại",
+      "delete_success": "Xóa tài liệu thành công",
+      "delete_failed": "Xóa tài liệu thất bại"
     },
     "validation": {
       "codeRequired": "Mã tài liệu là bắt buộc",
