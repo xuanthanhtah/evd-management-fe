@@ -5,6 +5,7 @@ import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
+  assetsInclude: ['**/*.xlsx'],
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {

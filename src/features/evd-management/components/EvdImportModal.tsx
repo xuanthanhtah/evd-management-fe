@@ -16,6 +16,7 @@ import {
   CloudUploadOutlined,
   WarningOutlined,
   CheckCircleOutlined,
+  DownloadOutlined,
 } from '@ant-design/icons';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import { useEvdUiStore } from '../store/useEvdUiStore';
@@ -27,6 +28,7 @@ import { evdKeys } from '../hooks/useEvdQueries';
 import type { ImportResult, InvalidImportRow, ImportRow } from '../types/evd.types';
 import type { WorkerOutboundMessage } from '../types/evd.types';
 import type { EvdListParams } from '../types/evd.types';
+import sampleFileUrl from '@/assets/files/sample_file_import.xlsx';
 
 const { Dragger } = Upload;
 const { Text } = Typography;
@@ -109,6 +111,16 @@ export const EvdImportModal = ({ queryParams }: EvdImportModalProps) => {
     },
     [createWorker],
   );
+
+  // Mục đích: Tải file excel mẫu về máy người dùng
+  const handleDownloadSample = useCallback(() => {
+    const link = document.createElement('a');
+    link.href = sampleFileUrl;
+    link.download = 'sample_file_import.xlsx';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }, []);
 
   // Mục đích: Chèn dữ liệu hợp lệ theo batch và cập nhật tiến trình realtime
   const handleConfirmInsert = useCallback(async () => {
@@ -229,9 +241,20 @@ export const EvdImportModal = ({ queryParams }: EvdImportModalProps) => {
       </Dragger>
 
       <div className="mt-4 p-3 bg-blue-50 rounded-lg">
-        <p className="text-xs font-medium text-blue-800 mb-1">
-          {t('evd:import.format_example')}
-        </p>
+        <div className="flex justify-between items-center mb-1">
+          <p className="text-xs font-medium text-blue-800">
+            {t('evd:import.format_example')}
+          </p>
+          <Button 
+            type="link" 
+            size="small" 
+            icon={<DownloadOutlined />} 
+            onClick={handleDownloadSample}
+            className="p-0 h-auto text-xs"
+          >
+            {t('evd:import.download_sample', { defaultValue: 'Tải file mẫu' })}
+          </Button>
+        </div>
         <pre className="text-xs text-blue-700 font-mono bg-white p-2 rounded border border-blue-100">
           {`code,title,category,status\nDOC-001,Contract Agreement,LEGAL,ACTIVE\nDOC-002,Q4 Budget,FINANCIAL,DRAFT`}
         </pre>
@@ -296,9 +319,10 @@ export const EvdImportModal = ({ queryParams }: EvdImportModalProps) => {
                 children: (
                   <div>
                     {/* Mục đích: Dùng virtualization để preview hàng trăm ngàn dòng mà không đóng băng trình duyệt */}
-                    <div className="grid grid-cols-4 gap-2 px-3 py-2 bg-gray-50 rounded-t-lg border border-gray-200 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                    <div className="grid grid-cols-5 gap-2 px-3 py-2 bg-gray-50 rounded-t-lg border border-gray-200 text-xs font-semibold text-gray-500 uppercase tracking-wider">
                       <span>{t('evd:table.column.code')}</span>
                       <span className="col-span-2">{t('evd:table.column.title')}</span>
+                      <span>{t('evd:table.column.category')}</span>
                       <span>{t('evd:table.column.status')}</span>
                     </div>
                     <div
@@ -326,7 +350,7 @@ export const EvdImportModal = ({ queryParams }: EvdImportModalProps) => {
                                 height: virtualRow.size,
                                 transform: `translateY(${virtualRow.start}px)`,
                               }}
-                              className={`grid grid-cols-4 gap-2 px-3 items-center text-sm border-b border-gray-100 ${virtualRow.index % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'
+                              className={`grid grid-cols-5 gap-2 px-3 items-center text-sm border-b border-gray-100 ${virtualRow.index % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'
                                 }`}
                             >
                               <span className="font-mono text-xs text-blue-700 truncate">
@@ -334,6 +358,9 @@ export const EvdImportModal = ({ queryParams }: EvdImportModalProps) => {
                               </span>
                               <span className="col-span-2 truncate text-gray-700">
                                 {row.title}
+                              </span>
+                              <span className="truncate text-gray-600">
+                                {row.category}
                               </span>
                               <EvdStatusTag status={row.status} />
                             </div>
