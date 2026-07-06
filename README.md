@@ -6,7 +6,7 @@ EVD Management Portal is a modern, enterprise-grade Single Page Application (SPA
 
 ## 🚀 Features
 
-- **Authentication & Authorization**: Secure login system with role-based access control (Admin, Manager, Staff).
+- **Authentication & Authorization**: Secure login system with role-based access control (ADMIN, STAFF).
 - **Document Management**: Create, Read, Update, and Delete (CRUD) documents.
 - **Import**: High-performance bulk import supporting CSV and XLSX formats, capable of processing hundreds of thousands of rows via Web Workers.
 - **Multilingual Support**: Fully localized in English and Vietnamese.
